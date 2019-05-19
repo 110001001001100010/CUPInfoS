@@ -1,10 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<link type="text/css" href="./css/login.css"/>
+<title>JerRy'sHOme</title>
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+}
+body {
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	height: 936px;
+	background-color: #FFF;
+}
+.lg_font {
+	font-family: "方正舒体";
+	font-size: 24px;
+	color: #000;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+.hd {
+	color: #000;
+}
+</style>
 </head>
-<body>
 
+<body >
+<div style='height:100px;margin:0 auto;'></div>
+<div style='width:400px;margin:0 auto;'>
+<form action='jsp/main.jsp' method='post'>
+<table style='text-align: center; font-size: 36px; color: #FFF; font-family: '方正舒体';'  cellspacing=0px>
+  <tr><td width="401"><img src="imgs/logo.jpg" width="98" height="89"></td>
+  
+  </tr>
+  
+  <tr>
+    <th class="hd" scope="col">JerRy'sHOme</th>
+  </tr>
+
+  <tr>
+    <td><span class="lg_font">账号:</span>
+<input  type='text' name='username' size='25px' /></td>
+  </tr>
+  <tr>
+    <td><font class="lg_font" >密码:</font> <input type='password' name='psword' size='25px'></td>
+  </tr>
+  <tr>
+    <td><br/> <input type='image' width="200px" formaction='jsp/main.jsp' alt='Submit' src='imgs/login_submit.PNG' /></td>
+  </tr>
+</table>
+</form>
+</div>
 </body>
 </html>
