@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!doctype html>
 <html>
 <head>
+<base href=" <%=basePath%>">
 <meta charset="utf-8">
 <title>JerRy'sHOme</title>
 <style type="text/css">
@@ -16,34 +21,38 @@
 
 <body>
 <div style="width:100%;height:100px;"></div>
-<form action="#" method="get">
+<form action="ResourceCL" method="get">
+<input type="hidden" value="add" name="type"/>
 <div style="width:100%;height:50px;">
 <span style="margin-left:50px;">院系： </span>
-<select>
+<select name="department">
 <option>-----------------------------</option>
+<option>经济管理学院</option>
 </select>
 <span style="margin-left:50px;">专业： </span>
-<select>
+<select name="profession">
 <option>-----------------------------</option>
+<option>信息管理与信息系统</option>
 </select>
 <span style="margin-left:50px;">课程： </span>
-<select>
+<select name="course">
 <option>-----------------------------</option>
+<option>WEB实验设计</option>
 </select>
 </div>
 <div style="margin-top:100px;margin-left:100px;float:left;width:500px;height:500px;">
-<div style="margin-bottom:50px;"><span>教师姓名: </span><input type="text" size="40px"/></div>
-<div style="margin-bottom:50px;"><span>链接地址: </span><input type="text" size="40px"/></div>
-<div style="margin-bottom:50px;"><span>链接密码: </span><input type="text" size="40px"/></div>
-<div style="margin-bottom:50px;"><span>您的学号: </span><input type="text" size="40px"/></div>
-<div style="margin-bottom:50px;"><span>您的姓名: </span><input type="text" size="40px"/></div>
+<div style="margin-bottom:50px;"><span>教师姓名: </span><input name="teacher" type="text" size="40px"/></div>
+<div style="margin-bottom:50px;"><span>链接地址: </span><input name="location" type="text" size="40px"/></div>
+<div style="margin-bottom:50px;"><span>链接密码: </span><input name="lockey" type="text" size="40px"/></div>
+<div style="margin-bottom:50px;"><span>您的学号: </span><input name="stuno" type="text" size="40px"/></div>
+<div style="margin-bottom:50px;"><span>您的姓名: </span><input name="stuname" type="text" size="40px"/></div>
 
 </div>
 <div style="margin-top:100px;margin-right:400px;float:right;width:500px;height:500px;">
-<div style="margin-bottom:50px;"><span>提交主题: </span><input type="text" size="40px"/></div>
-<div style="margin-bottom:50px;"><span>提交说明: </span><br/><textarea  style="resize:none;width:400px;height:100px;"></textarea>
+<div style="margin-bottom:50px;"><span>提交主题: </span><input name="topic" type="text" size="40px"/></div>
+<div style="margin-bottom:50px;"><span>提交说明: </span><br/><textarea name="description"  style="resize:none;width:400px;height:100px;"></textarea>
 </div>
-<div style="margin-bottom:50px;text-align:center;width:400px;"><input formaction='#' type="image" src="../imgs/submit.png" style="width:130px;;height:50px;"/></div>
+<div style="margin-bottom:50px;text-align:center;width:400px;"><input  type="image" src="imgs/submit.png" style="width:130px;;height:50px;"/></div>
 </div>
 
 </form>

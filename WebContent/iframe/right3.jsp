@@ -1,8 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+    import="java.util.ArrayList"
+    import="com.zhi.domain.*"
+    import="com.zhi.service.*"
     pageEncoding="UTF-8"%>
+<%
+	String myPageNow=(String) request.getParameter("myPageNow");
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    ArrayList<Estimate> al=null;
+    int pageCount,pageSize=10,pageNow=1;
+	if(myPageNow!=null) {
+		pageNow=Integer.parseInt(myPageNow);
+	}
+	pageCount=EstimateService.getPageCount(pageSize);
+	
+	
+%>
 <!doctype html>
 <html>
 <head>
+<base href=" <%=basePath%>">
 <meta charset="utf-8">
 <title>JerRy'sHOme</title>
 <style type="text/css">
@@ -11,12 +28,35 @@
 	padding:0;
 	overflow: hidden;
 }
+table{
+	table-layout: fixed;
+	text-align:center;
+}
+tr{
+	overflow:hidden
+	text-overflow: ellipsis;
+	-moz-text-overflow: ellipsis;
+	white-space: nowrap;  
+    text-align: center;
+}
+
+td{
+	height:40px;
+	overflow:hidden
+	text-overflow: ellipsis;
+	-moz-text-overflow: ellipsis;
+	white-space: nowrap;  
+    text-align: center;
+}
 </style>
 </head>
 
 <body>
 <div style="width:100%;height:100px;"></div>
-<form action="#" method="get">
+<form action="EstimateCL" method="get">
+<input type="hidden" value="query" name="type"/>
+<input type="hidden" value=<%=pageNow %> name="pageNow"/>
+<input type="hidden" value=<%=pageSize %> name="pageSize"/>
 <div style="width:100%;height:50px;">
 <span style="margin-left:50px;">院系： </span>
 <select>
@@ -31,8 +71,81 @@
 <option>-----------------------------</option>
 </select>
 
-<input type='image' style="float:right;margin-right:200px;margin-bottom:-5px;" width="55px" formaction='#' alt='Seek' src='../imgs/seek.PNG' />
+<input type='image' style="float:right;margin-right:200px;margin-bottom:-5px;" width="55px" alt='Seek' src='imgs/seek.PNG' />
 </div>
 </form>
+
+<div style="margin-top:100px;margin-left:100px;float:left;width:1400px;height:500px;">
+<!--动态-->
+	<table style="width:1400px" border="1" cellspacing="0">
+		
+<%
+if(request.getAttribute("rows")!=null){		
+	al=(ArrayList)request.getAttribute("rows");
+}else{
+	al=EstimateService.getEstimatesByPage(pageNow, pageSize);
+}
+%>
+	<tr><th>院系</th><th>专业</th><th>课程</th><th>教师</th><th>主题</th><th>说明</th><th>学号</th><th>姓名</th><th>主观评价</th></tr>
+<%
+		for(Estimate r:al){
+			
+%>
+	<tr><td><%=r.getDepartment() %></td><td><%=r.getProfession() %></td><td><%=r.getCourse() %></td><td><%=r.getTeacher() %></td><td><%=r.getTopic() %></td><td><%=r.getDescription() %></td><td><%=r.getStuno() %></td><td><%=r.getStuname() %></td><td><%=r.getAll() %></td></tr>
+
+<% 
+}
+%>
+</table>
+</div>
+<div style="float:left;margin-left:600px;">
+<%
+if(pageNow==1) {
+%>
+
+<a href="iframe/right3.jsp?myPageNow=<%=pageNow%>">上一页</a>
+	
+<%
+}else {
+%>
+
+<a href="iframe/right3.jsp?myPageNow=<%=pageNow-1%>">上一页</a>
+<% 
+}
+
+%>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<%
+	for(int i=1;i<=pageCount;i++) {
+%>
+<a href="iframe/right3.jsp?myPageNow=<%=i%>"> < <%=i%> > </a>
+<%
+}
+%>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%
+if(pageNow==pageCount) {
+%>
+<a href='iframe/right3.jsp?myPageNow=<%=pageNow%>'>下一页</a>
+<%
+}else {
+%>
+<a href='iframe/right3.jsp?myPageNow=<%=pageNow+1%>'>下一页</a>
+<%
+}
+%>
+</div>
+<br/>
+<div style="float:right;margin-right:100px;">
+当前是第
+<font color='red'> <%=pageNow %> </font>页      
+共有<font color='blue'> <%=pageCount %></font>页
+</div>
+
+	
 </body>
 </html>
