@@ -48,6 +48,9 @@
 
 
 		</select>
+		<input type='image' onclick="toAsk()"
+				style="float: right; margin-right: 200px; margin-bottom: -5px;"
+				width="55px" alt='Seek' src='imgs/seek.PNG' />
 	</div>
 
 

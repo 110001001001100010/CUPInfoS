@@ -37,7 +37,7 @@ public class ResourceService {
 
 	// 得到分页结果
 	public static ArrayList getResourcesByPage(int pageNow, int pageSize) {
-		String sql = "select * from kczl limit " + ((pageNow - 1) * pageSize + 1) + "," + pageSize;
+		String sql = "select * from kczl limit " + ((pageNow - 1) * pageSize ) + "," + pageSize;
 		ArrayList<Object[]> al = SQLHelper.query(sql, null);
 		Resource r = null;
 		ArrayList<Resource> arrayList = new ArrayList();
