@@ -100,12 +100,12 @@ a:active {
 			<li class="index_list"><a onClick="goTo('iframe/right2.jsp')">共享资料</a></li>
 			<li class="index_list"><a onClick="goTo('iframe/right3.jsp')">课程评价</a></li>
 			<li class="index_list"><a onClick="goTo('iframe/right4.jsp')">提交评价</a></li>
-			<li class="index_list"><a onClick="goTo('iframe/right5.jsp')">毕业留言</a></li>
-			<li class="index_list"><a onClick="goTo('iframe/right6.jsp')">个人资料</a></li>
+			<li class="index_list"><a onClick="goTo('iframe/right5.jsp')">评价汇总</a></li>
+			<!--  <li class="index_list"><a onClick="goTo('iframe/right6.jsp')">个人资料</a></li>-->
 		</ul>
 	</div>
 	<div
-		style="height: 30px; width: 1536px; margin-top: 30px; padding: 0px; float: right; position: relative; background-color: #CCCCCC; layer-background-color: #CCCCCC; border: 1px none #000000;">
+		style="height: 30px; width: 1536px; margin-top: 0px; padding: 0px; float: right; position: relative; background-color: #CCCCCC; layer-background-color: #CCCCCC; border: 1px none #000000;">
 		<div style="float: right; width: 50px; height: 30px;">
 			<a href="index.html">退出</a>
 		</div>

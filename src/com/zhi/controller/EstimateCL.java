@@ -47,7 +47,7 @@ public class EstimateCL extends HttpServlet {
 			String description;
 			String stuno;
 			String stuname;
-			String all;
+			String judge;
 			department=request.getParameter("department");
 			profession=request.getParameter("profession");
 			course=request.getParameter("course");
@@ -56,7 +56,7 @@ public class EstimateCL extends HttpServlet {
 			description=request.getParameter("description");
 			stuno=request.getParameter("stuno");
 			stuname=request.getParameter("stuname");
-			all=request.getParameter("all");
+			judge=request.getParameter("judge");
 			String []parameters= {department,
 					profession,
 					course,
@@ -65,7 +65,7 @@ public class EstimateCL extends HttpServlet {
 					description,
 					stuno,
 					stuname,
-					all
+					judge
 				};
 			String sql="insert into kcpj values(?,?,?,?,?,?,?,?,?)";
 			EstimateService.update(sql, parameters);

@@ -36,7 +36,7 @@ public class EstimateService {
 	
 	//得到分页结果
 	public static ArrayList getEstimatesByPage(int pageNow,int pageSize) {
-		String sql="select * from kcpj limit "+((pageNow-1)*pageSize+1)+","+pageSize;
+		String sql="select * from kcpj limit "+((pageNow-1)*pageSize)+","+pageSize;
 		ArrayList<Object []> al=SQLHelper.query(sql, null);
 		Estimate r=null;
 		ArrayList<Estimate> arrayList=new ArrayList();
