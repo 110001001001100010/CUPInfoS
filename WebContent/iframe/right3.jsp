@@ -46,6 +46,12 @@ td {
 	text-align: center;
 }
 </style>
+<script type="text/javascript">
+	function show(i){
+		alert(document.getElementById("des"+i).value);
+		
+	}
+</script>
 </head>
 
 <body>
@@ -107,12 +113,13 @@ td {
 				<th>课程</th>
 				<th>教师</th>
 				<th>主题</th>
-				<th>说明</th>
+				<th>课程评价留言</th>
 				<th>学号</th>
 				<th>姓名</th>
 				<th>主观评价</th>
 			</tr>
 			<%
+			int j=0;
 				for (Estimate r : al) {
 			%>
 			<tr>
@@ -121,13 +128,15 @@ td {
 				<td><%=r.getCourse()%></td>
 				<td><%=r.getTeacher()%></td>
 				<td><%=r.getTopic()%></td>
-				<td><%=r.getDescription()%></td>
+				<td><input style="width:80px;height:25px;" type="button" onclick="show(<%=j%>)" value="点击查看"/></td>
+				<input type="hidden" id="des<%=j%>" value=<%=r.getDescription()%> />
 				<td><%=r.getStuno()%></td>
 				<td><%=r.getStuname()%></td>
 				<td><%=r.getAll()%></td>
 			</tr>
 
 			<%
+					j++;
 				}
 			%>
 		</table>
@@ -175,8 +184,8 @@ td {
 	</div>
 	<br />
 	<div style="float: right; margin-right: 100px;">
-		当前是第 <font color='red'> <%=pageNow%>
-		</font>页 共有<font color='blue'> <%=pageCount%></font>页
+		当前是第 <font color='red'> <%=pageNow%> 
+		</font>页 共有<font color='blue'> <%=pageCount%> </font>页
 	</div>
 
 

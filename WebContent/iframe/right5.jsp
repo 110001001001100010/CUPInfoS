@@ -8,6 +8,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>JerRy'sHOme</title>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+</style>
 <base href=" <%=basePath%>">
 <meta charset="utf-8">
 <!-- 引入 ECharts 文件 -->

@@ -48,7 +48,7 @@ public class ResourceCL extends HttpServlet {
 			String teacher = "";
 			String location = "";
 			String lockey = "";
-			String stuno = "0";
+			String stuno = "";
 			String stuname = "";
 			String topic = "";
 			String description = "";
@@ -102,7 +102,7 @@ public class ResourceCL extends HttpServlet {
 			for (int i = 0; i < list.size(); i++) {
 				parameters[i] = list.get(i);
 			}
-			sql += " limit " + ((pageNow - 1) * pageSize + 1) + "," + pageSize;
+			sql += " limit " + ((pageNow - 1) * pageSize) + "," + pageSize;
 			list = null;
 			list = ResourceService.query(sql, parameters);
 			request.setAttribute("rows", list);

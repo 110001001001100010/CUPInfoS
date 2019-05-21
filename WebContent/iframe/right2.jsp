@@ -18,11 +18,23 @@
 	overflow: hidden;
 }
 </style>
+<script type="text/javascript">
+	function check(){
+		
+		if(document.getElementsByName("stuno")[0].value==""){
+			window.alert("学号不能为空");
+			return false;
+		}
+		return true;
+		
+	}
+	
+</script>
 </head>
 
 <body>
 	<div style="width: 100%; height: 100px;"></div>
-	<form action="ResourceCL" method="get">
+	<form action="ResourceCL" method="get" onsubmit="return check()">
 		<input type="hidden" value="add" name="type" />
 		<div style="width: 100%; height: 50px;">
 			<span style="margin-left: 50px;">院系： </span> <select

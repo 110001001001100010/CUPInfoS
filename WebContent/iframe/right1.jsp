@@ -46,6 +46,12 @@ td {
 	text-align: center;
 }
 </style>
+<script type="text/javascript">
+	function show(i){
+		alert(document.getElementById("des"+i).value);
+		
+	}
+</script>
 </head>
 
 <body>
@@ -109,13 +115,13 @@ td {
 				<th>课程</th>
 				<th>教师</th>
 				<th>主题</th>
-				<th>说明</th>
+				<th>学习资料说明</th>
 				<th>链接内容</th>
 				<th>链接密码</th>
 				<th>学号</th>
 				<th>姓名</th>
 			</tr>
-			<%
+			<% 	int j=0;
 				for (Resource r : al) {
 			%>
 			<tr>
@@ -124,7 +130,9 @@ td {
 				<td><%=r.getCourse()%></td>
 				<td><%=r.getTeacher()%></td>
 				<td><%=r.getTopic()%></td>
-				<td><%=r.getDescription()%></td>
+				<!--  <td><%=r.getDescription() %></td>-->
+				<td><input style="width:80px;height:25px;" type="button" onclick="show(<%=j%>)" value="点击查看"/></td>
+				<input type="hidden" id="des<%=j%>" value=<%=r.getDescription()%> />
 				<td><a href="<%=r.getLocation()%>" target="_blank">下载</a></td>
 				<td><%=r.getLockey()%></td>
 				<td><%=r.getStuno()%></td>
@@ -132,6 +140,7 @@ td {
 			</tr>
 
 			<%
+					j++;
 				}
 			%>
 		</table>
@@ -179,8 +188,8 @@ td {
 	</div>
 	<br />
 	<div style="float: right; margin-right: 100px;">
-		当前是第 <font color='red'> <%=pageNow%>
-		</font>页 共有<font color='blue'> <%=pageCount%></font>页
+		当前是第 <font color='red'> <%=pageNow%> 
+		</font>页 共有<font color='blue'>  <%=pageCount%></font>页
 	</div>
 
 

@@ -93,7 +93,7 @@ public class EstimateCL extends HttpServlet {
 			for (int i = 0; i < list.size(); i++) {
 				parameters[i] = list.get(i);
 			}
-			sql += " limit " + ((pageNow - 1) * pageSize + 1) + "," + pageSize;
+			sql += " limit " + ((pageNow - 1) * pageSize) + "," + pageSize;
 			list = null;
 			list = EstimateService.query(sql, parameters);
 			request.setAttribute("rows", list);

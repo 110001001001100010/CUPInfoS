@@ -96,11 +96,13 @@ a:active {
 		</div>
 		<div>JerRy'sHOme</div>
 		<ul>
-			<li class="index_list"><a onClick="goTo('iframe/right1.jsp')">课程资料</a></li>
+			<li class="index_list"><a onClick="goTo('iframe/right1.jsp')">学习资料</a></li>
 			<li class="index_list"><a onClick="goTo('iframe/right2.jsp')">共享资料</a></li>
 			<li class="index_list"><a onClick="goTo('iframe/right3.jsp')">课程评价</a></li>
 			<li class="index_list"><a onClick="goTo('iframe/right4.jsp')">提交评价</a></li>
 			<li class="index_list"><a onClick="goTo('iframe/right5.jsp')">评价汇总</a></li>
+			<li class="index_list"><a onClick="goTo('iframe/right6.jsp')">时间信使</a></li>
+			
 			<!--  <li class="index_list"><a onClick="goTo('iframe/right6.jsp')">个人资料</a></li>-->
 		</ul>
 	</div>
