@@ -111,8 +111,7 @@ a:active {
 		</div>
 	</div>
 	<iframe id="myFrame" src="iframe/right1.jsp" width="80%"
-		height="1000px" scrolling="no" frameborder="0px">
-	</iframe>
+		height="1000px" scrolling="no" frameborder="0px"> </iframe>
 </body>
 
 </html>

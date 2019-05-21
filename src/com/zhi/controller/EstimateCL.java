@@ -18,27 +18,29 @@ import com.zhi.service.EstimateService;
 @WebServlet("/EstimateCL")
 public class EstimateCL extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EstimateCL() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public EstimateCL() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		
-		String type=request.getParameter("type");
-		if("add".equals(type)) {
-			//add resource
+
+		String type = request.getParameter("type");
+		if ("add".equals(type)) {
+			// add resource
 			String department;
 			String profession;
 			String course;
@@ -48,69 +50,63 @@ public class EstimateCL extends HttpServlet {
 			String stuno;
 			String stuname;
 			String judge;
-			department=request.getParameter("department");
-			profession=request.getParameter("profession");
-			course=request.getParameter("course");
-			teacher=request.getParameter("teacher");
-			topic=request.getParameter("topic");
-			description=request.getParameter("description");
-			stuno=request.getParameter("stuno");
-			stuname=request.getParameter("stuname");
-			judge=request.getParameter("judge");
-			String []parameters= {department,
-					profession,
-					course,
-					teacher,
-					topic,
-					description,
-					stuno,
-					stuname,
-					judge
-				};
-			String sql="insert into kcpj values(?,?,?,?,?,?,?,?,?)";
+			department = request.getParameter("department");
+			profession = request.getParameter("profession");
+			course = request.getParameter("course");
+			teacher = request.getParameter("teacher");
+			topic = request.getParameter("topic");
+			description = request.getParameter("description");
+			stuno = request.getParameter("stuno");
+			stuname = request.getParameter("stuname");
+			judge = request.getParameter("judge");
+			String[] parameters = { department, profession, course, teacher, topic, description, stuno, stuname,
+					judge };
+			String sql = "insert into kcpj values(?,?,?,?,?,?,?,?,?)";
 			EstimateService.update(sql, parameters);
 			request.getRequestDispatcher("iframe/right3.jsp").forward(request, response);
-		}else if("query".equals(type)) {
-			//query resource
-			String department="";
-			String profession="";
-			String course="";
-			int pageNow=Integer.parseInt(request.getParameter("pageNow"));
-			int pageSize=Integer.parseInt(request.getParameter("pageSize"));
-			
-			department=request.getParameter("department");
-			profession=request.getParameter("profession");
-			course=request.getParameter("course");
-			List<String> list=new ArrayList();
-			String sql="select * from kcpj where 1=1 ";
-			if(!"-----------------------------".equals(department)) {
+		} else if ("query".equals(type)) {
+			// query resource
+			String department = "";
+			String profession = "";
+			String course = "";
+			int pageNow = Integer.parseInt(request.getParameter("pageNow"));
+			int pageSize = Integer.parseInt(request.getParameter("pageSize"));
+
+			department = request.getParameter("department");
+			profession = request.getParameter("profession");
+			course = request.getParameter("course");
+			List<String> list = new ArrayList();
+			String sql = "select * from kcpj where 1=1 ";
+			if (!"-----------------------------".equals(department)) {
 				list.add(department);
-				sql+=" and department=? ";
+				sql += " and department=? ";
 			}
-			if(!"-----------------------------".equals(profession)) {
+			if (!"-----------------------------".equals(profession)) {
 				list.add(profession);
-				sql+=" and profession=? ";
+				sql += " and profession=? ";
 			}
-			if(!"-----------------------------".equals(course)) {
+			if (!"-----------------------------".equals(course)) {
 				list.add(course);
-				sql+=" and course=? ";
+				sql += " and course=? ";
 			}
-			String parameters[]=new String[list.size()];
-			for(int i=0;i<list.size();i++) {
-				parameters[i]=list.get(i);
+			String parameters[] = new String[list.size()];
+			for (int i = 0; i < list.size(); i++) {
+				parameters[i] = list.get(i);
 			}
-			sql+= " limit "+((pageNow-1)*pageSize+1)+","+pageSize;
-			list=null;
-			list=EstimateService.query(sql,parameters);
+			sql += " limit " + ((pageNow - 1) * pageSize + 1) + "," + pageSize;
+			list = null;
+			list = EstimateService.query(sql, parameters);
 			request.setAttribute("rows", list);
-			request.getRequestDispatcher("iframe/right3.jsp").forward(request, response);	
+			request.getRequestDispatcher("iframe/right3.jsp").forward(request, response);
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
